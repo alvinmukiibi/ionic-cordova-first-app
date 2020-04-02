@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+import { Storage } from "@ionic/storage";
 
 @Injectable({
   providedIn: "root"
@@ -9,7 +10,7 @@ export class PhotoService {
 
   currentImage: any; // declare an attribute on the class and since its typescript, give it a type of any
 
-  constructor(private camera: Camera) {}
+  constructor(private camera: Camera, private storage: Storage) {}
 
   takePicture() {
     const options: CameraOptions = {
@@ -25,11 +26,21 @@ export class PhotoService {
         this.photos.unshift({
           data: this.currentImage
         });
+        // Save all photos for later viewing
+        this.storage.set("photos", this.photos);
       },
       err => {
         console.log("Camera Issue: " + err);
       }
     );
+  }
+
+  // function for load on init
+
+  loadSaved() {
+    this.storage.get("photos").then(photos => {
+      this.photos = photos || [];
+    });
   }
 }
 
