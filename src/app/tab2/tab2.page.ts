@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Camera, CameraOptions} from '@ionic-native/camera/ngx'
+// import the Camera and Options components
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
 
 
 @Component({
@@ -9,10 +10,11 @@ import {Camera, CameraOptions} from '@ionic-native/camera/ngx'
 })
 export class Tab2Page {
 
-  currentImage: any;
+  currentImage: any; // declare an attribute on the class and since its typescript, give it a type of any
 
+  // initialise a camera variable to the Camera component
   constructor(private camera: Camera) { }
-  
+
   takePicture() {
     const options: CameraOptions = {
       quality: 100,
