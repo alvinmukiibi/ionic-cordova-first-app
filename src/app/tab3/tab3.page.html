@@ -23,4 +23,44 @@
   <ion-button color="light">Light</ion-button>
   <ion-button color="medium">Medium</ion-button>
   <ion-button color="dark">Dark</ion-button>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Forms</ion-card-subtitle>
+      <ion-card-title>Input</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!--text, password, email, number, search, tel, url-->
+      <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <ion-list lines="full">
+          <ion-item>
+            <ion-label position="stacked"
+              >First Item <ion-text color="danger">*</ion-text></ion-label
+            >
+            <ion-input type="text" placeholder="Awesome Input"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="fixed">Last Name</ion-label>
+            <ion-input
+              required
+              type="text"
+              placeholder="Awesome Input"
+              clearInput="true"
+              color="tertiary"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Notes</ion-label>
+            <ion-textarea></ion-textarea>
+          </ion-item>
+        </ion-list>
+        <div class="ion-padding">
+          <ion-button expand="block" type="submit" class="ion-no-margin"
+            >Create account</ion-button
+          >
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
